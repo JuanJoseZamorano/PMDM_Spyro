@@ -1,5 +1,6 @@
 package dam.pmdm.spyrothedragon;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -86,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage(R.string.text_about)
                 .setPositiveButton(R.string.accept, null)
                 .show();
+    }
+    private void marcarGuiaVista() {
+        SharedPreferences preferences = getSharedPreferences("configuracion", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("guiaVista", true);
+        editor.apply();
     }
 
 
