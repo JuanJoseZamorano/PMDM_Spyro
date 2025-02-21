@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+
 import androidx.fragment.app.Fragment;
 import dam.pmdm.spyrothedragon.databinding.FragmentGuiaBinding;
 
@@ -18,12 +20,7 @@ public class GuiaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGuiaBinding.inflate(inflater, container, false);
-        // Asegurarnos de que el contenedor de pantallas existe
-        if (binding.contenedorPantallas == null) {
-            Log.e("GuiaFragment", "Error: No se encontró contenedorPantallas");
-        } else {
-            Log.d("GuiaFragment", "ContenedorPantallas encontrado correctamente.");
-        }
+
         // Cargar la primera pantalla
         mostrarPantalla(1);
 
@@ -62,8 +59,17 @@ public class GuiaFragment extends Fragment {
         View botonAvanzar = pantalla.findViewById(R.id.botonComenzar);
         View botonOmitir = pantalla.findViewById(R.id.botonOmitirGuia);
 
+
+
         // Botón para avanzar a la siguiente pantalla
         if (botonAvanzar != null) {
+            // Crear una animación de "entrada y salida" en el margen derecho
+            TranslateAnimation animacion = new TranslateAnimation(0, -20, 0, 0);
+            animacion.setDuration(700);
+            animacion.setRepeatMode(TranslateAnimation.REVERSE);
+            animacion.setRepeatCount(TranslateAnimation.INFINITE);
+
+            botonAvanzar.startAnimation(animacion); // Aplicar la animación
             botonAvanzar.setOnClickListener(v -> {
                 if (pantallaActual < TOTAL_PANTALLAS) {
                     pantallaActual++;
