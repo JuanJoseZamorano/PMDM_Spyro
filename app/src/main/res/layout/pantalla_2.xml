@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple3Trans">
+    <TextView
+        android:id="@+id/botonOmitirGuia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Omitir Guía"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"/>
+    <!-- Bocadillo Animado -->
+    <TextView
+        android:id="@+id/textoPersonajes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bocadillo"
+        android:text="Aquí podrás explorar a todos los personajes del mundo de Spyro."
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:padding="15dp"
+        android:alpha="0"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

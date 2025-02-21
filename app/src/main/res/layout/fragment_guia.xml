@@ -3,50 +3,14 @@
     android:id="@+id/guiaLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple2Trans"
+    android:background="@android:color/transparent"
     android:clickable="true"
     android:focusable="true">
 
-    <!-- Contenedor de la guía -->
-    <LinearLayout
+    <!-- Contenedor donde se cargarán las pantallas de la guía -->
+    <FrameLayout
+        android:id="@+id/contenedorPantallas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <TextView
-            android:id="@+id/textoGuia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¡Bienvenido a la Guía Interactiva!"
-            android:textSize="22sp"
-            android:textColor="@android:color/white"
-            android:gravity="center"
-            android:padding="10dp"/>
-
-        <!-- Botón estilo Drawable para comenzar -->
-        <!-- Botón de comenzar (usando un ImageView con fondo drawable) -->
-        <FrameLayout
-            android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:id="@+id/botonComenzar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/boton_comenzar"
-                android:contentDescription="Comenzar guía"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Comenzar"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"
-                android:gravity="center"/>
-        </FrameLayout>
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

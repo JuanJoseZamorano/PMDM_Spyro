@@ -2,7 +2,8 @@
 <resources>
     <color name="pink">#c55e97</color>
     <color name="purple">#9c35ba</color>
-    <color name="purple2Trans">#989c35ba</color>
+    <color name="purple2Trans">#9947025B</color>
+    <color name="purple3Trans">#25A72CCE</color>
     <color name="purpleBotonPress">#9c35ba</color>
     <color name="purpleBotonNormal">#989c35ba</color>
     <color name="orange">#e7a56e</color>
