@@ -3,7 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple3Trans">
-
+    <TextView
+        android:id="@+id/botonOmitirGuia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Guia"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"/>
 
     <!-- Bocadillo Animado -->
     <TextView

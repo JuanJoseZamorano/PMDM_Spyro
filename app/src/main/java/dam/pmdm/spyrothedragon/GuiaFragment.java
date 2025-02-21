@@ -6,6 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
 import androidx.fragment.app.Fragment;
@@ -29,17 +34,22 @@ public class GuiaFragment extends Fragment {
 
     // Método para cambiar entre pantallas de la guía
     private void mostrarPantalla(int numeroPantalla) {
-        int layoutResId = obtenerLayoutPantalla(numeroPantalla);
-        if (layoutResId == 0) return;
 
-        // Reemplazar la pantalla anterior con la nueva
+        int layoutResId = obtenerLayoutPantalla(numeroPantalla);
+        if (layoutResId == 0) {
+            return;
+        }
         View nuevaPantalla = getLayoutInflater().inflate(layoutResId, binding.contenedorPantallas, false);
+        if (nuevaPantalla == null) {
+            return;
+        }
         binding.contenedorPantallas.removeAllViews();
         binding.contenedorPantallas.addView(nuevaPantalla);
-
-        // Configurar botones de la pantalla
         configurarBotones(nuevaPantalla);
+        configurarAnimacionesBocadillo(nuevaPantalla);  // ⬅ Animar bocadillos
+
     }
+
 
     // Obtiene el layout correspondiente a cada pantalla
     private int obtenerLayoutPantalla(int numeroPantalla) {
@@ -58,8 +68,6 @@ public class GuiaFragment extends Fragment {
     private void configurarBotones(View pantalla) {
         View botonAvanzar = pantalla.findViewById(R.id.botonComenzar);
         View botonOmitir = pantalla.findViewById(R.id.botonOmitirGuia);
-
-
 
         // Botón para avanzar a la siguiente pantalla
         if (botonAvanzar != null) {
@@ -97,6 +105,33 @@ public class GuiaFragment extends Fragment {
         // Ocultar la guía en la actividad principal
         requireActivity().findViewById(R.id.includeGuia).setVisibility(View.GONE);
     }
+    private void configurarAnimacionesBocadillo(View pantalla) {
+        View bocadillo = pantalla.findViewById(R.id.bocadilloGuia);
+        if (bocadillo != null) {
+            // Fade-in (aparece de la nada)
+            AlphaAnimation fadeIn = new AlphaAnimation(0f, 1f);
+            fadeIn.setDuration(700);
+
+            // Rebote
+            ScaleAnimation bounce = new ScaleAnimation(
+                    0.8f, 1f,  // Escala de X
+                    0.8f, 1f,  // Escala de Y
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f);
+            bounce.setDuration(800);
+            bounce.setInterpolator(new BounceInterpolator());
+
+            // Agrupar animaciones
+            AnimationSet animacionFinal = new AnimationSet(true);
+            animacionFinal.addAnimation(fadeIn);
+            animacionFinal.addAnimation(bounce);
+
+            // Aplicar animación
+            bocadillo.startAnimation(animacionFinal);
+        }
+    }
+
+
 
     @Override
     public void onDestroyView() {
