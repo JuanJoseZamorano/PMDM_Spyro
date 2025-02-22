@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import dam.pmdm.spyrothedragon.databinding.ActivityMainBinding;
 
 
@@ -107,5 +110,14 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage(R.string.text_about)
                 .setPositiveButton(R.string.accept, null)
                 .show();
+    }
+
+    // MEtodo para cambiar de pestaña desde la guia
+
+    public void cambiarPestana(int itemId) {
+        BottomNavigationView navView = findViewById(R.id.navView);
+        if (navView != null) {
+            navView.setSelectedItemId(itemId);
+        }
     }
 }

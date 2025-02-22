@@ -1,5 +1,6 @@
 package dam.pmdm.spyrothedragon;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +48,27 @@ public class GuiaFragment extends Fragment {
         binding.contenedorPantallas.addView(nuevaPantalla);
         configurarBotones(nuevaPantalla);
         configurarAnimacionesBocadillo(nuevaPantalla);  // ⬅ Animar bocadillos
+
+        // cambio de pestaña seguin la guia
+        Activity activity = getActivity();
+        if (activity instanceof MainActivity) {
+            MainActivity mainActivity = (MainActivity) activity;
+
+            switch (numeroPantalla) {
+                case 3:
+                    mainActivity.cambiarPestana(R.id.nav_worlds); // Botón de "Mundos"
+                    break;
+                case 4:
+                    mainActivity.cambiarPestana(R.id.nav_collectibles); // Botón de "Coleccionables"
+                    break;
+                case 5:
+                    mainActivity.cambiarPestana(R.id.nav_characters); // Botón de "Personajes"
+                    break;
+                default:
+                    // No hacer nada si no es una pantalla que cambie la pestaña
+                    break;
+            }
+        }
 
     }
 
