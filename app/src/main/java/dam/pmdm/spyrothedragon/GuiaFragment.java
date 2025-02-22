@@ -107,7 +107,17 @@ public class GuiaFragment extends Fragment {
     }
     private void configurarAnimacionesBocadillo(View pantalla) {
         View bocadillo = pantalla.findViewById(R.id.bocadilloGuia);
+        View anillo = pantalla.findViewById(R.id.anilloResaltado);
+
         if (bocadillo != null) {
+            aplicarAnimacion(bocadillo);
+        }
+        if (anillo != null) {
+            aplicarAnimacion(anillo);
+
+        }
+    }
+    private void aplicarAnimacion(View view){
             // Fade-in (aparece de la nada)
             AlphaAnimation fadeIn = new AlphaAnimation(0f, 1f);
             fadeIn.setDuration(700);
@@ -127,9 +137,9 @@ public class GuiaFragment extends Fragment {
             animacionFinal.addAnimation(bounce);
 
             // Aplicar animación
-            bocadillo.startAnimation(animacionFinal);
+            view.startAnimation(animacionFinal);
         }
-    }
+
 
 
 

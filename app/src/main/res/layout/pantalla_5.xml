@@ -10,10 +10,11 @@
         android:layout_height="wrap_content"
         android:text="Omitir Guía"
         android:textSize="14sp"
-        android:textColor="@android:color/white"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"/>
+        android:textColor="@color/black"
+        android:layout_below="@id/botonComenzar"
+        android:layout_alignEnd="@id/botonComenzar"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="30dp"/>
 
     <ImageView
         android:id="@+id/botonComenzar"
@@ -30,7 +31,7 @@
         android:focusable="true"/>
     <!-- Bocadillo Animado -->
     <TextView
-        android:id="@+id/textoInfo"
+        android:id="@+id/bocadilloGuia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bocadillo"
@@ -39,16 +40,16 @@
         android:textColor="@android:color/black"
         android:padding="15dp"
         android:layout_marginBottom="150dp"
+        android:layout_marginEnd="55dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
     <ImageView
         android:id="@+id/anilloResaltado"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
-
         android:layout_marginEnd="0dp"
         android:alpha="70"
-        android:layout_marginTop="-30dp"
-        android:src="@drawable/anillo_resaltado" />
+        android:layout_marginTop="0dp"
+        android:src="@drawable/flecha_arriba" />
 </RelativeLayout>
