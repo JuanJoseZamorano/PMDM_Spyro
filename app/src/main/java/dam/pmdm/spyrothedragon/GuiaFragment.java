@@ -37,17 +37,30 @@ public class GuiaFragment extends Fragment {
     private void mostrarPantalla(int numeroPantalla) {
 
         int layoutResId = obtenerLayoutPantalla(numeroPantalla);
-        if (layoutResId == 0) {
-            return;
-        }
+        if (layoutResId == 0) return;
+
         View nuevaPantalla = getLayoutInflater().inflate(layoutResId, binding.contenedorPantallas, false);
-        if (nuevaPantalla == null) {
-            return;
-        }
+        if (nuevaPantalla == null) return;
+
+        // ⬇️ ANIMACIÓN DE TRANSICIÓN (Deslizamiento)
+        TranslateAnimation slideIn = new TranslateAnimation(300, 0, 0, 0); // Desliza de derecha a izquierda
+        slideIn.setDuration(900);
+
+
+
+        AnimationSet animacionFinal = new AnimationSet(true);
+        animacionFinal.addAnimation(slideIn);
+
+
+        nuevaPantalla.startAnimation(animacionFinal); // ⬅ Aplicamos la animación antes de cambiar la pantalla
+
+        // Reemplazar la pantalla anterior
         binding.contenedorPantallas.removeAllViews();
         binding.contenedorPantallas.addView(nuevaPantalla);
+
+        // Configurar los elementos de la nueva pantalla
         configurarBotones(nuevaPantalla);
-        configurarAnimacionesBocadillo(nuevaPantalla);  // ⬅ Animar bocadillos
+        configurarAnimacionesBocadillo(nuevaPantalla);
 
         // cambio de pestaña seguin la guia
         Activity activity = getActivity();
