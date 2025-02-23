@@ -36,7 +36,7 @@ public class CollectiblesFragment extends Fragment {
         recyclerView = binding.recyclerViewCollectibles;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         collectiblesList = new ArrayList<>();
-        adapter = new CollectiblesAdapter(collectiblesList);
+        adapter = new CollectiblesAdapter(collectiblesList,requireContext());
         recyclerView.setAdapter(adapter);
 
         loadCollectibles();
