@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import dam.pmdm.spyrothedragon.FuegoView;
 import dam.pmdm.spyrothedragon.R;
 import dam.pmdm.spyrothedragon.models.Character;
 import dam.pmdm.spyrothedragon.adapters.CharactersAdapter;
@@ -31,20 +33,44 @@ public class CharactersFragment extends Fragment {
     private CharactersAdapter adapter;
     private List<Character> charactersList;
 
+    private FrameLayout contenedorFuego;
+    private boolean fuegoMostrado = false;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentCharactersBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
         // Inicializamos el RecyclerView y el adaptador
         recyclerView = binding.recyclerViewCharacters;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         charactersList = new ArrayList<>();
-        adapter = new CharactersAdapter(charactersList);
+        contenedorFuego = root.findViewById(R.id.contenedorFuego);
+        adapter = new CharactersAdapter(charactersList, this::mostrarFuego);
         recyclerView.setAdapter(adapter);
 
         // Cargamos los personajes desde el XML
         loadCharacters();
         return binding.getRoot();
+    }
+    private void mostrarFuego() {
+        if (!fuegoMostrado) {
+            fuegoMostrado = true;
+            // Crear la vista del fuego en la posición correcta
+            FuegoView fuegoView = new FuegoView(requireContext());
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(200, 200);
+            params.leftMargin = 150;  // Ajuste horizontal
+            params.topMargin = 190;  // Ajuste vertical
+
+            fuegoView.setLayoutParams(params);
+            contenedorFuego.addView(fuegoView);
+
+            contenedorFuego.postDelayed(() -> {
+                fuegoView.detenerAnimacion();
+                contenedorFuego.removeAllViews();
+                fuegoMostrado = false;
+            }, 2000);
+        }
     }
 
     @Override
