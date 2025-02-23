@@ -2,6 +2,7 @@ package dam.pmdm.spyrothedragon;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,15 +23,24 @@ public class GuiaFragment extends Fragment {
     private FragmentGuiaBinding binding;
     private int pantallaActual = 1;
     private static final int TOTAL_PANTALLAS = 6;
+    private MediaPlayer mediaPlayer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGuiaBinding.inflate(inflater, container, false);
-
+        // Iniciar la música de fondo
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.fondospyro);
+        if (mediaPlayer != null) {
+            mediaPlayer.setLooping(true); // La música se repite en bucle
+            // Ajustar volumen al 30% (0.3f de 1.0f)
+            mediaPlayer.setVolume(0.3f, 0.3f);
+            mediaPlayer.start();
+        }
         // Cargar la primera pantalla
         mostrarPantalla(1);
 
         return binding.getRoot();
+
     }
 
     // Método para cambiar entre pantallas de la guía
@@ -114,7 +124,13 @@ public class GuiaFragment extends Fragment {
 
             botonAvanzar.startAnimation(animacion); // Aplicar la animación
             botonAvanzar.setOnClickListener(v -> {
+
                 if (pantallaActual < TOTAL_PANTALLAS) {
+                    if (pantallaActual==5){
+                        reproducirSonido(R.raw.fin_guia);
+                        }else if (pantallaActual > 1 && pantallaActual < 5){
+                        reproducirSonido(R.raw.boton_avanzar);
+                    }
                     pantallaActual++;
                     mostrarPantalla(pantallaActual);
                 } else {
@@ -136,7 +152,12 @@ public class GuiaFragment extends Fragment {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("guiaVista", true);
         editor.apply();
-
+        // Detener la música de fondo al cerrar la guía
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
         // Ocultar la guía en la actividad principal
         requireActivity().findViewById(R.id.includeGuia).setVisibility(View.GONE);
     }
@@ -175,6 +196,13 @@ public class GuiaFragment extends Fragment {
             view.startAnimation(animacionFinal);
         }
 
+    private void reproducirSonido(int sonidoResId) {
+        MediaPlayer mediaPlayer = MediaPlayer.create(requireContext(), sonidoResId);
+        if (mediaPlayer != null) {
+            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+            mediaPlayer.start();
+        }
+    }
 
 
 
