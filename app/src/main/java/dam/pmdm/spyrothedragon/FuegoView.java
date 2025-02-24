@@ -16,6 +16,7 @@ public class FuegoView extends View {
     private boolean animar = true; // Indica si la animación está activa
     private Handler handler = new Handler(); // Maneja la repetición de la animación
 
+
     // Constructor que inicializa la vista
     public FuegoView(Context context) {
         super(context);
