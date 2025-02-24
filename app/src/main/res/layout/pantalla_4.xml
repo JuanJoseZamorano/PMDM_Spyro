@@ -34,14 +34,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bocadillo"
-        android:text="Aquí podrás ver los objetos coleccionables del juego."
+        android:text="@string/coleccionables"
         android:textSize="18sp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/black"
         android:padding="15dp"
-        android:layout_marginBottom="150dp"
-        android:layout_marginEnd="55dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginBottom="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
     <ImageView
         android:id="@+id/anilloResaltado"

@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/botonOmitirGuia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cerrar Guia"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"/>
+    android:layout_height="match_parent"
+    android:background="@color/purple2Trans">
 
     <!-- Bocadillo Animado -->
     <TextView
-        android:id="@+id/textoFinal"
+        android:id="@+id/bocadilloGuia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¡Has completado la guía!"
-        android:textSize="22sp"
-        android:textColor="@android:color/white"
-        android:gravity="center"
-        android:padding="10dp"/>
+        android:background="@drawable/bocadillo"
+        android:text="@string/finguia"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:padding="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="350dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+
+    <!-- Botón centrado debajo del bocadillo -->
+    <Button
+        android:id="@+id/botonOmitirGuia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bocadilloGuia"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-216dp"
+        android:background="@drawable/boton_omitir"
+        android:padding="10dp"
+        android:text="@string/cerrarguia"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 </RelativeLayout>

@@ -7,7 +7,7 @@
         android:id="@+id/botonOmitirGuia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Omitir Guía"
+        android:text="@string/omitirguia"
         android:textSize="14sp"
         android:textColor="@color/black"
         android:layout_marginEnd="10dp"
@@ -41,14 +41,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bocadillo"
-            android:text="Aquí puedes ver los mundos de Spyro."
+            android:text="@string/mundos"
             android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/black"
             android:padding="15dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginEnd="55dp"
-            android:layout_marginBottom="150dp"/>
+            android:layout_marginBottom="150dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
         <ImageView
             android:id="@+id/anilloResaltado"
             android:layout_width="80dp"

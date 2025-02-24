@@ -4,6 +4,15 @@
     <string name="characters">Personajes</string>
     <string name="collectibles">Coleccionables</string>
     <string name="title_about">Acerca de</string>
-    <string name="text_about">Aplicación desarrollada por \n <b>Lindsay Barrero Martínez.</b></string>
+    <string name="text_about">Aplicación desarrollada por \n <b>Lindsay Barrero Martínez</b> y trabajada por el alumnado \n <b>Juan Jose Zamorano Garcia</b> </string>
     <string name="accept">Aceptar</string>
+    <string name="bienvenido">Bienvenido a la Guia interactiva de la APP de SPyro: The Dragon. Aqui podras ver todo lo relacionado con esta app, y como usar sus diferentes opciones.</string>
+    <string name="comenzar">Comenzar!</string>
+    <string name="omitirguia">Omitir Guia</string>
+    <string name="finguia">YA SBES TODO LO NECESARIO PARA USAR TU APP DE SPYRO : THE DRAGON.\n Esperamos que disfrutes de tus aventuras draconianas.</string>
+    <string name="personajes">Aqui podras ver a todos los personajes de la saga Spyro y ver sus caracteristicas</string>
+    <string name="mundos">Aqui podras ver a todos mundos por los que Spoyro recorrera sus aventuras</string>
+    <string name="about">Aqui podras ver la informacion relativa a la app y su version mas reciente instalada</string>
+    <string name="coleccionables">Aqui podras ver a todos los objetos coleccionables que Spyro podra ir recogiendo sobre todas sus aventuras por los diferentes mundos.</string>
+    <string name="cerrarguia">Cerrar Guia</string>
 </resources>
