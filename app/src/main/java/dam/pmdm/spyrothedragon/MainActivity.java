@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        // codigo para que siempre salga la guia
-
-        SharedPreferences preferences = getSharedPreferences("configuracion", 0);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("guiaVista", false);
-        editor.apply();
-
-        // acaba el codigo
+// codigo para que siempre salga la guia
+//
+//        SharedPreferences preferences = getSharedPreferences("configuracion", 0);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putBoolean("guiaVista", false);
+//        editor.apply();
+//
+// acaba el codigo
 
         // Configurar navegación con NavController
         Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.navHostFragment);
@@ -51,17 +51,20 @@ public class MainActivity extends AppCompatActivity {
         binding.navView.setOnItemSelectedListener(this::selectedBottomMenu);
 
         // Verificar si la guía debe mostrarse
-//        SharedPreferences preferences = getSharedPreferences("configuracion", MODE_PRIVATE);
+       SharedPreferences preferences = getSharedPreferences("configuracion", MODE_PRIVATE);
        boolean guiaVista = preferences.getBoolean("guiaVista", false);
 
         if (!guiaVista) {
             mostrarGuia();
+        }else{
+            findViewById(R.id.includeGuia).setVisibility(View.GONE);
         }
     }
 
     // Método para mostrar la guía interactiva
     private void mostrarGuia() {
         View guia = findViewById(R.id.includeGuia);
+
         if (guia != null) {
             guia.setVisibility(View.VISIBLE);
 
@@ -71,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.includeGuia, new GuiaFragment())
                     .commit();
         } else {
-            System.out.println("Error: No se encontró el layout de la guía.");
+            guia.setVisibility(View.GONE);
+
+
         }
     }
 

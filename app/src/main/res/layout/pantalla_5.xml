@@ -28,7 +28,7 @@
         android:padding="10dp"
         android:clickable="true"
         android:focusable="true"/>
-    <!-- Bocadillo Animado -->
+
     <TextView
         android:id="@+id/bocadilloGuia"
         android:layout_width="wrap_content"

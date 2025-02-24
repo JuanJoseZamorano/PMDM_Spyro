@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/purple2Trans">
 
-    <!-- Bocadillo Animado -->
+
     <TextView
         android:id="@+id/bocadilloGuia"
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"/>
 
-    <!-- Botón centrado debajo del bocadillo -->
+
     <Button
         android:id="@+id/botonOmitirGuia"
         android:layout_width="wrap_content"
